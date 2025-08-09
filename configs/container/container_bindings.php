@@ -11,6 +11,7 @@ use Slim\Csrf\Guard;
 use Slim\Factory\AppFactory;
 
 use App\Csrf;
+use App\Config;
 
 return [
     App::class => function (ContainerInterface $container) {
@@ -29,6 +30,9 @@ return [
 
         return $app;
     },
+    Config::class => create(Config::class)->constructor(
+        require CONFIG_PATH . '/base_config.php',
+    ),
 
     ResponseFactoryInterface::class => fn(App $app) => $app->getResponseFactory(),
 
@@ -37,4 +41,6 @@ return [
         failureHandler: $csrf->failureHandler(),
         persistentTokenMode: true
     ),
+
+
 ];
