@@ -1,0 +1,38 @@
+.idea/
+# IDE
+.vscode/
+nbproject/
+.DS_STORE
+
+# Coverage
+/coverage/
+
+# Vendor
+/vendor/
+
+# Logs & Uploads
+/storage/logs/*
+/storage/uploads/*
+# !/storage/logs/README.md
+
+# Cache
+/var/cache/*
+.phpunit.result.cache
+cache.properties
+.php_cs.cache
+
+# Composer
+composer.phar
+composer.lock
+
+# Environment
+.env
+.env.local
+.env.testing
+
+# Temporary files
+*.tmp
+*.log
+
+#customs
+/HIDDEN-README.md
