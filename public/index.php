@@ -1,20 +1,8 @@
 <?php
-use Psr\Http\Message\ResponseInterface as Response;
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Slim\Factory\AppFactory;
-use Dotenv\Dotenv as Dotenv;
+declare(strict_types = 1);
 
 require __DIR__ . '/../vendor/autoload.php';
 
-$dotenv = Dotenv::createImmutable(__DIR__ . "/../");
-$dotenv->load();
+$container = require __DIR__ . '/../bootstrap.php';
 
-$app = AppFactory::create();
-
-$app->get('/', function (Request $request, Response $response) {
-    $response->getBody()->write("Hello, welcome to $_ENV[APP_NAME] api. created by Eren Boluk");
-
-    return $response;
-});
-
-$app->run();
+$container->get(\Slim\App::class)->run();
